@@ -21,3 +21,7 @@ th input.player {
 	font-weight: bold;
 	border: 0;
 }
+
+.icon {
+	cursor: ns-resize;
+}
