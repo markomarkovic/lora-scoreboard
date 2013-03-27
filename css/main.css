@@ -8,3 +8,16 @@ body {
 	margin-top: 5em;
 }
 
+
+th {
+	width: 23.75%;
+}
+thead tr th:first-child { /* First column */
+	width: 5%;
+}
+th input.player {
+	background: transparent;
+	color: #444;
+	font-weight: bold;
+	border: 0;
+}
