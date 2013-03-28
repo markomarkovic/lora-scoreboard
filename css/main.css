@@ -36,6 +36,10 @@ input.score
 input.score {
 	text-align: right;
 	font-weight: normal;
+	box-shadow: none;
+	height: auto;
+	margin-bottom: 0;
+	line-height: normal;
 }
 input.error {
 	color: #f66;
