@@ -130,18 +130,28 @@ $(function() { // document.ready
 		.on('blur keyup', 'input.score', function() {
 			for (var i = 1; i <= 4; i++) {
 				var pt = $(this).parents('table');
-				var total = 0;
+				var round = 0;
 				pt.find('.score.p'+i).each(function() {
 					var el = $(this);
 					var score = parseInt(el.val(), 10);
 					if (isNumber(score)) {
 						el.removeClass('error');
-						total += score;
+						round += score;
 					} else {
 						el.addClass('error');
 					}
 				});
-				pt.find('.total .p'+i).html(total);
+				pt.find('.round-score.p'+i).html(round);
+
+				// Total score
+				var total = 0;
+				$('.round-score.p'+i).each(function() {
+					var score = parseInt($(this).html(), 10);
+					if (isNumber(score)) {
+						total += score;
+					}
+				});
+				$('.total-score.p'+i).html(total);
 			}
 		});
 
@@ -151,7 +161,16 @@ $(function() { // document.ready
 		var scoreboard = btn.parent().find('.scoreboard').first().clone().attr('id', 'scoreboard_'+new Date().getTime());
 		scoreboard.tableDnD(dndOpts);
 		scoreboard.find('.score').val('');
+		scoreboard.find('.round-score').html('');
 		btn.after(scoreboard);
+
+		// Total total
+		if ($('#totaltotal').length == 0) {
+			var scoreboard = btn.parent().find('.scoreboard').first().clone().attr('id', 'totaltotal').removeClass('scoreboard');
+			scoreboard.find('tbody').remove();
+			scoreboard.find('.round-score').removeClass('round-score').addClass('total-score');
+			btn.before(scoreboard);
+		}
 	})
 
 });
