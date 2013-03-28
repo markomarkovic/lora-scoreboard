@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Lora</title>
+	<title>Lora scoreboard</title>
 	<meta name="description" content="Simple scoreboard for `Lora` — a card game.">
 	<meta name="viewport" content="width=device-width">
 
@@ -20,8 +20,9 @@
 
 	<div class="container-fluid">
 
+		<button id="next-round-trigger" class="btn btn-success pull-right"><i class="icon-plus icon-white"></i> Next round</button>
 
-		<table class="table table-striped table-bordered">
+		<table class="scoreboard table table-striped table-bordered">
 			<thead>
 				<tr>
 					<th>LORA</th>
@@ -85,10 +86,10 @@
 			<thead>
 				<tr class="total">
 					<th class="sigma">&Sigma;</th>
-					<th class="p1"></th>
-					<th class="p2"></th>
-					<th class="p3"></th>
-					<th class="p4"></th>
+					<th class="round-score p1"></th>
+					<th class="round-score p2"></th>
+					<th class="round-score p3"></th>
+					<th class="round-score p4"></th>
 				</tr>
 			</thead>
 		</table>

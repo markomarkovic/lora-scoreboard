@@ -5,9 +5,16 @@
    ========================================================================== */
 
 body {
-	margin-top: 5em;
+	margin-top: 1em;
 }
 
+#next-round-trigger {
+	margin-bottom: 1em;
+}
+
+.scoreboard {
+	margin-bottom: 3em;
+}
 
 th {
 	width: 24%;

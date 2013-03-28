@@ -118,16 +118,20 @@ serializeTable:function(a){for(var b="",c=a.id,e=a.rows,d=0;d<e.length;d++){0<b.
 // ==================================================================[ Code ]===
 $(function() { // document.ready
 
-	// Edit player names
-	$('table')
-		.tableDnD({
-			onDragClass: 'warning',
-			dragHandle: '.icon'
-		})
+	// Rows reorder
+	var dndOpts = {
+		onDragClass: 'warning',
+		dragHandle: '.icon'
+	};
+	$('table').tableDnD(dndOpts);
+
+	// Score calculation
+	$(document)
 		.on('blur keyup', 'input.score', function() {
 			for (var i = 1; i <= 4; i++) {
+				var pt = $(this).parents('table');
 				var total = 0;
-				$('.score.p'+i).each(function() {
+				pt.find('.score.p'+i).each(function() {
 					var el = $(this);
 					var score = parseInt(el.val(), 10);
 					if (isNumber(score)) {
@@ -137,9 +141,18 @@ $(function() { // document.ready
 						el.addClass('error');
 					}
 				});
-				$('.total .p'+i).html(total);
+				pt.find('.total .p'+i).html(total);
 			}
 		});
+
+	// Next round
+	$(document).on('click', '#next-round-trigger', function() {
+		var btn = $(this);
+		var scoreboard = btn.parent().find('.scoreboard').first().clone().attr('id', 'scoreboard_'+new Date().getTime());
+		scoreboard.tableDnD(dndOpts);
+		scoreboard.find('.score').val('');
+		btn.after(scoreboard);
+	})
 
 });
 
