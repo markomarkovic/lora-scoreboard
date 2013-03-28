@@ -123,6 +123,26 @@ $(function() { // document.ready
 		.tableDnD({
 			onDragClass: 'warning',
 			dragHandle: '.icon'
+		})
+		.on('blur keyup', 'input.score', function() {
+			for (var i = 1; i <= 4; i++) {
+				var total = 0;
+				$('.score.p'+i).each(function() {
+					var el = $(this);
+					var score = parseInt(el.val(), 10);
+					if (isNumber(score)) {
+						el.removeClass('error');
+						total += score;
+					} else {
+						el.addClass('error');
+					}
+				});
+				$('.total .p'+i).html(total);
+			}
 		});
 
 });
+
+function isNumber(n) {
+	return !isNaN(parseFloat(n)) && isFinite(n);
+}
